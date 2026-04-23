@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+.bookings-page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  padding-top: 70px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.bookings-hero {
+  background: linear-gradient(180deg, rgba(99,102,241,0.1) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bookings-hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.bookings-hero p {
+  color: rgba(255,255,255,0.35);
+  font-size: 14px;
+  margin: 0;
+}
+
+.bookings-stats {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px 24px;
+}
+
+.bs-item { text-align: center; padding: 0 16px; }
+
+.bs-num {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.active-num { color: #22c55e; }
+
+.bs-label {
+  display: block;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.bs-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+}
+
+.notif {
+  margin: 20px 32px;
+  border-radius: 12px;
+  padding: 14px 48px 14px 18px;
+  position: relative;
+  font-size: 14px;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.notif-info {
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.3);
+  color: #a5b4fc;
+}
+
+.notif-error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171;
+}
+
+.notif-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+
+.bookings-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
+
+.bookings-list { display: flex; flex-direction: column; gap: 12px; }
+
+.booking-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: border-color 0.2s;
+}
+
+.booking-card:hover:not(.cancelled) {
+  border-color: rgba(99,102,241,0.3);
+}
+
+.booking-card.cancelled {
+  opacity: 0.5;
+}
+
+.bc-left { flex-shrink: 0; }
+
+.bc-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bc-status-dot.active {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34,197,94,0.5);
+}
+
+.bc-status-dot.cancelled { background: #6b7280; }
+
+.bc-body { flex: 1; min-width: 0; }
+
+.bc-event {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bc-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+}
+
+.bc-seat {
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
+.bc-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.bc-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
+.badge-booked {
+  background: rgba(34,197,94,0.15);
+  border: 1px solid rgba(34,197,94,0.3);
+  color: #86efac;
+}
+
+.badge-cancelled {
+  background: rgba(107,114,128,0.15);
+  border: 1px solid rgba(107,114,128,0.3);
+  color: #9ca3af;
+}
+
+.cancel-btn {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #f87171;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.2s;
+}
+
+.cancel-btn:hover:not(:disabled) { background: rgba(239,68,68,0.2); }
+.cancel-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.loader-wrap { display: flex; justify-content: center; padding: 80px; }
+
+.dot-loader { display: flex; gap: 8px; align-items: center; }
+
+.dot-loader span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6366f1;
+  animation: bounce 0.9s ease-in-out infinite;
+}
+.dot-loader span:nth-child(2) { animation-delay: 0.15s; }
+.dot-loader span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.nb-icon { font-size: 56px; margin-bottom: 20px; }
+
+.nb-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.nb-sub {
+  color: rgba(255,255,255,0.35);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.nb-cta {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.nb-cta:hover { opacity: 0.9; }
+
+/* ── Booking groups ────────────────────────────────────────────────────────── */
+.booking-group { margin-bottom: 20px; }
+
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.18);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 2px;
+}
+
+.group-event-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #a5b4fc;
+}
+
+.group-count {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px;
+  padding: 2px 10px;
+}
+
+.bc-seat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.bc-seat {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
