@@ -7,7 +7,7 @@ A production-grade full-stack event booking platform featuring an **interactive 
 ## 📸 Screenshots
 
 ### Login Page
-![Login](screenshots/login.png)
+![Login](screenshots/Login.png)
 
 ### Admin Dashboard
 ![Admin](screenshots/admin.png)
